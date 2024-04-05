@@ -1,20 +1,58 @@
 name: Check and test the source code
 on:
   pull_request:
-    branches:
-      - main
+
 jobs:
-  test:
-    name: Check the source code
+  lint:
+    name: Lint the source code
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2.16.0
         with:
           flutter-version: "3.19.5"
+          cache: true
       - name: Install packages
         run: flutter pub get
       - name: Linter
-        run: flutter analyze && fvm dart run custom_lint
+        run: flutter analyze && dart run custom_lint
+  test:
+    name: Test the source code
+    needs: [lint]
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2.16.0
+        with:
+          flutter-version: "3.19.5"
+          cache: true
+      - name: Install packages
+        run: flutter pub get
       - name: Test
         run: flutter test
+
+  build:
+    name: Build the source code
+    needs: [lint, test]
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2.16.0
+        with:
+          flutter-version: "3.19.5"
+          cache: true
+      - name: Install packages
+        run: flutter pub get
+      - name: Build
+        run: flutter build ios --release --no-codesign
+
+  actions-timeline:
+    runs-on: ubuntu-latest
+    needs: [setup, lint]
+    permissions:
+      actions: read
+
+    steps:
+      - uses: Kesin11/actions-timeline@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

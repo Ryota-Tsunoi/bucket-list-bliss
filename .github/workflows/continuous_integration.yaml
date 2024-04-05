@@ -1,0 +1,20 @@
+name: Check and test the source code
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    name: Check the source code
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2.16.0
+        with:
+          flutter-version: "3.19.5"
+      - name: Install packages
+        run: flutter pub get
+      - name: Linter
+        run: flutter analyze && fvm dart run custom_lint
+      - name: Test
+        run: flutter test

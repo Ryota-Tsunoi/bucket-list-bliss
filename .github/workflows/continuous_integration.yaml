@@ -1,0 +1,73 @@
+name: Check and test the source code
+on:
+  pull_request:
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2.16.0
+        with:
+          flutter-version: "3.19.5"
+          channel: "stable"
+          cache: true
+      - name: Install packages
+        run: flutter pub get
+      - name: Install packages
+        run: flutter pub get
+  lint:
+    name: Lint
+    needs: [setup]
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2.16.0
+        with:
+          flutter-version: "3.19.5"
+          cache: true
+      - name: Install packages
+        run: flutter pub get
+      - name: Linter
+        run: flutter analyze && dart run custom_lint
+  test:
+    name: Test
+    needs: [setup]
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2.16.0
+        with:
+          flutter-version: "3.19.5"
+          cache: true
+      - name: Install packages
+        run: flutter pub get
+      - name: Test
+        run: flutter test
+  build:
+    name: Build
+    needs: [setup]
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2.16.0
+        with:
+          flutter-version: "3.19.5"
+          cache: true
+      - name: Install packages
+        run: flutter pub get
+      - name: Build
+        run: flutter build ios --release --no-codesign
+  actions-timeline:
+    name: Actions Timeline
+    runs-on: ubuntu-latest
+    needs: [lint, test, build]
+    permissions:
+      actions: read
+
+    steps:
+      - uses: Kesin11/actions-timeline@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

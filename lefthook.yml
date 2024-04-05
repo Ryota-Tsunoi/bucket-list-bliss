@@ -1,0 +1,14 @@
+pre-commit:
+  piped: true
+  commands:
+    1_format:
+      glob: "*.dart"
+      run: fvm flutter pub run import_sorter:main \
+        && fvm dart format {staged_files} \
+        && git add {staged_files}
+    2_linter:
+      run: fvm flutter analyze {staged_files}
+    3_custom_lint:
+      run: fvm dart run custom_lint {staged_files}
+    4_tests:
+      run: fvm flutter test .

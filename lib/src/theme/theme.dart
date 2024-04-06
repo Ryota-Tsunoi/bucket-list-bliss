@@ -10,14 +10,28 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 /// アプリのライトモード用のThemeData
 final lightTheme = ThemeData(
   colorSchemeSeed: Colors.green,
-  fontFamily: GoogleFonts.dotGothic16().fontFamily,
+  fontFamily: GoogleFonts.mPlus1().fontFamily,
+  inputDecorationTheme: const InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(
+        Radius.circular(4.0),
+      ),
+    ),
+  ),
   brightness: Brightness.light,
 );
 
 /// アプリのダークモード用のThemeData
 final darkTheme = ThemeData(
   colorSchemeSeed: Colors.green,
-  fontFamily: GoogleFonts.dotGothic16().fontFamily,
+  fontFamily: GoogleFonts.mPlus1().fontFamily,
+  inputDecorationTheme: const InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(
+        Radius.circular(4.0),
+      ),
+    ),
+  ),
   brightness: Brightness.dark,
 );
 

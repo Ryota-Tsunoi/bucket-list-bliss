@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:logger/logger.dart';
 
-class RouterObserver extends NavigatorObserver {
+class RoutingObserver extends NavigatorObserver {
   final logger = Logger();
   @override
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {

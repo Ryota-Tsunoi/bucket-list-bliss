@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 // Project imports:
-import 'package:bucket_list_bliss/common/observers/router_observer.dart';
 import 'package:bucket_list_bliss/main.dart';
+import 'package:bucket_list_bliss/src/utils/observers/routing_observer.dart';
 
 final routeConfig = GoRouter(
   debugLogDiagnostics: true,
   observers: [
-    RouterObserver(),
+    RoutingObserver(),
   ],
   routes: [
     GoRoute(

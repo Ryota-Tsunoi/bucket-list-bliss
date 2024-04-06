@@ -5,12 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
+import 'package:bucket_list_bliss/common/provider_observer.dart';
 import 'package:bucket_list_bliss/config/theme/theme.dart';
 
 void main() {
   runApp(
-    const ProviderScope(
-      child: AppRoot(),
+    ProviderScope(
+      observers: [
+        AppObserver(),
+      ],
+      child: const AppRoot(),
     ),
   );
 }

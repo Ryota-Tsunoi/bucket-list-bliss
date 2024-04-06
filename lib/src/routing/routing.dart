@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 // Project imports:
 import 'package:bucket_list_bliss/main.dart';
+import 'package:bucket_list_bliss/src/features/authentication/presentation/sign_in.dart';
 import 'package:bucket_list_bliss/src/utils/observers/routing_observer.dart';
 
 final routeConfig = GoRouter(
@@ -19,11 +20,11 @@ final routeConfig = GoRouter(
       builder: (context, state) => const HomeScreen(),
       routes: [
         GoRoute(
-          path: 'second',
+          path: 'sign-in',
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               key: state.pageKey,
-              child: const SecondScreen(),
+              child: const SignInScreen(),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                 return FadeTransition(
@@ -37,6 +38,10 @@ final routeConfig = GoRouter(
           },
         ),
       ],
+    ),
+    GoRoute(
+      path: '/second',
+      builder: (context, state) => const SecondScreen(),
     ),
   ],
 );

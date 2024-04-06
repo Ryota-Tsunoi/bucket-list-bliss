@@ -69,9 +69,9 @@ class HomeScreen extends ConsumerWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.go('/second');
+                context.go('/sign-in');
               },
-              child: const Text('Go to Second Screen'),
+              child: const Text('Go to Sign-in Screen'),
             ),
           ],
         ),

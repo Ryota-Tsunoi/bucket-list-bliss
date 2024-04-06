@@ -1,10 +1,8 @@
 name: Check and test the source code
 on:
   pull_request:
-    paths:
-      - "lib/**"
-      - "test/**"
-      - "pubspec.yaml"
+    branches:
+      - main
 
 jobs:
   setup:

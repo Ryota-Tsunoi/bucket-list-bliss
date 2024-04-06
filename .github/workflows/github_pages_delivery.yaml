@@ -3,6 +3,8 @@ name: github pages deployment
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "README.md"
 
   workflow_dispatch:
 

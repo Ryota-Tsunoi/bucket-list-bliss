@@ -8,6 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // Project imports:
 import 'package:bucket_list_bliss/common/observers/provider_observer.dart';
 import 'package:bucket_list_bliss/common/router.dart';
+import 'package:bucket_list_bliss/components/custom_scaffold.dart';
 import 'package:bucket_list_bliss/config/theme/theme.dart';
 
 void main() {
@@ -45,7 +46,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
-    return Scaffold(
+    return SelectableScaffold(
       appBar: AppBar(
         title: const Text('Bucket List Bliss'),
         actions: [
@@ -84,7 +85,7 @@ class SecondScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SelectableScaffold(
       appBar: AppBar(
         title: const Text('Second Screen'),
       ),

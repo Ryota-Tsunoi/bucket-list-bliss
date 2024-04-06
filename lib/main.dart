@@ -6,10 +6,10 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import 'package:bucket_list_bliss/common/observers/provider_observer.dart';
-import 'package:bucket_list_bliss/common/router.dart';
-import 'package:bucket_list_bliss/components/custom_scaffold.dart';
-import 'package:bucket_list_bliss/config/theme/theme.dart';
+import 'package:bucket_list_bliss/src/common_widgets/scaffold.dart';
+import 'package:bucket_list_bliss/src/routing/routing.dart';
+import 'package:bucket_list_bliss/src/theme/theme.dart';
+import 'package:bucket_list_bliss/src/utils/observers/provider_observer.dart';
 
 void main() {
   runApp(

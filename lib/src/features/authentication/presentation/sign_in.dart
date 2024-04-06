@@ -102,7 +102,6 @@ class _SignInForm extends HookWidget {
                   child: const Text('Sign In'),
                 ),
                 const SizedBox(height: 10),
-                // サンプルなので、どんなアドレスとパスワードの組み合わせでもOKとする、という説明文言
                 const Text(
                   'NOTE: You can use any email and password combination. This is just a sample.',
                   style: TextStyle(
